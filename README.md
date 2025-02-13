@@ -1,3 +1,10 @@
+# To reproduce the thesis results you have first to clone Motion and bvh2fbx repos:
+
+```bash
+git clone https://github.com/ciroanni/bvh2fbx
+git clone https://github.com/ciroanni/Motion
+```
+
 # (CVPR 2023) T2M-GPT
 Pytorch implementation of paper "T2M-GPT: Generating Human Motion from Textual Descriptions with Discrete Representations"
 
