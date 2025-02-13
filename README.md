@@ -1,4 +1,4 @@
-# To reproduce the thesis results you have first to clone Motion and bvh2fbx repos:
+# To reproduce the thesis results you have to clone Motion and bvh2fbx repos:
 
 ```bash
 git clone https://github.com/ciroanni/bvh2fbx
