@@ -9,18 +9,21 @@ class npy2obj:
     def __init__(self, npy_path, sample_idx, rep_idx, device=0, cuda=True):
         self.npy_path = npy_path
         self.motions = np.load(self.npy_path, allow_pickle=True)
+        self.motions = self.motions.transpose(0, 2, 3, 1)
+        print(f'Loaded motion with shape {self.motions.shape}')
         if self.npy_path.endswith('.npz'):
             self.motions = self.motions['arr_0']
         self.motions = self.motions[None][0]
         self.rot2xyz = Rotation2xyz(device='cpu')
         self.faces = self.rot2xyz.smpl_model.faces
-        self.bs, self.njoints, self.nfeats, self.nframes = self.motions['motion'].shape
+        self.bs, self.njoints, self.nfeats, self.nframes = self.motions.shape
         self.opt_cache = {}
         self.sample_idx = sample_idx
-        self.total_num_samples = self.motions['num_samples']
+        self.total_num_samples = self.motions[0]
         self.rep_idx = rep_idx
         self.absl_idx = self.rep_idx*self.total_num_samples + self.sample_idx
-        self.num_frames = self.motions['motion'][self.absl_idx].shape[-1]
+        print(self.absl_idx)
+        self.num_frames = self.motions[3]
         self.j2s = joints2smpl(num_frames=self.num_frames, device_id=device, cuda=cuda)
 
         if self.nfeats == 3:
