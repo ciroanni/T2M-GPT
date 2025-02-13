@@ -1,0 +1,6 @@
+[submodule "bvh2fbx"]
+	path = bvh2fbx
+	url = https://github.com/ciroanni/bvh2fbx
+[submodule "Motion"]
+	path = Motion
+	url = https://github.com/ciroanni/Motion
